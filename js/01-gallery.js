@@ -41,15 +41,20 @@ function OnImageClick(evt) {
 `)
    instance.show()
 
-   window.addEventListener("keydown", (evt) => {
+   window.addEventListener("keydown", onEscKeyPress);
+
+   function onEscKeyPress(evt){
     if (evt.code !== "Escape") {
-      return;
+      return;   
     }
+    console.log('close window')
     instance.close();
-  });
-    };
+    window.removeEventListener("keydown", onEscKeyPress);
+      };
+    };    
   };
  
+
 
   galleryContainer.addEventListener('click', OnImageClick); 
 
